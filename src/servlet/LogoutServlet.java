@@ -7,13 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Servlet")
-public class Servlet extends HttpServlet {
+@WebServlet(name = "LogoutServlet")
+public class LogoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getSession().invalidate();
+        response.sendRedirect("login");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getSession().invalidate();
+        response.sendRedirect("login");
     }
 }
