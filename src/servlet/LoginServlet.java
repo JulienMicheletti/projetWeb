@@ -46,13 +46,13 @@ public class LoginServlet extends HttpServlet {
         }
 
         request.setAttribute("erreurs",erreurs);
-        request.getRequestDispatcher("login.jsp").forward(request,response);
+        request.getRequestDispatcher("vue/login.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getSession().getAttribute("id") != null) {
             response.sendRedirect("accueil");
         } else
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+            request.getRequestDispatcher("vue/login.jsp").forward(request,response);
     }
 }

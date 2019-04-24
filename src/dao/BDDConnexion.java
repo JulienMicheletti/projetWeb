@@ -18,8 +18,6 @@ public class BDDConnexion {
             // chargement du driver
             Class.forName(driver);
             cnx = DriverManager.getConnection(url,username, pwd);
-            if(cnx == null)
-                System.out.println("NNNNNUUUUUUUUUULLLLLLLLL");
 //			Class.forName("com.mysql.jdbc.Driver");
 //			cnx=DriverManager.getConnection("jdbc:mysql://localhost:3306/formation","root","");
 

@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
 
                         user.save();
                         session.setAttribute("id", user.getId());
-                        response.sendRedirect("test.jsp");
+                        response.sendRedirect("vue/test.jsp");
                         return;
                     }
                 } catch (SQLException e) {
@@ -53,13 +53,13 @@ public class RegisterServlet extends HttpServlet {
             }
         }
         request.setAttribute("erreurs", erreurs);
-        request.getRequestDispatcher("register.jsp").forward(request,response);
+        request.getRequestDispatcher("vue/register.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getSession().getAttribute("id") != null) {
             response.sendRedirect("accueil");
         } else
-            request.getRequestDispatcher("register.jsp").forward(request,response);
+            request.getRequestDispatcher("vue/register.jsp").forward(request,response);
     }
 }

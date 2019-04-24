@@ -29,4 +29,20 @@
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>DocFilter</filter-name>
+        <filter-class>filter.DocFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>DocFilter</filter-name>
+        <url-pattern>/vue/*</url-pattern>
+    </filter-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/vue/error404.jsp</location>
+    </error-page>
+
 </web-app>

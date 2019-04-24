@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
-    <%@include file="entete.jsp"%>
+    <title>Accueil</title>
+    <%@include file="vue/entete.jsp"%>
   </head>
   <body>
   <div class="row center">
