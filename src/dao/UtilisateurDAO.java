@@ -24,7 +24,7 @@ public class UtilisateurDAO extends DAO{
         ResultSet rs = setQuery("SELECT * FROM utilisateur ORDER BY id");
         ArrayList<Utilisateur> array = new ArrayList<>();
         while (rs.next()) {
-            array.add(new Utilisateur(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+            array.add(new Utilisateur(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5), rs.getInt(6)));
         }
         return array;
     }
@@ -33,7 +33,7 @@ public class UtilisateurDAO extends DAO{
         ResultSet rs = setQuery("SELECT * FROM utilisateur WHERE Pseudo='"+username+"' and Mdp='"+password+"'");
         if (!rs.next())
             return null;
-        return new Utilisateur(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+        return new Utilisateur(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5), rs.getInt(6));
     }
 
     public boolean existPseudo(String pseudo) throws SQLException {

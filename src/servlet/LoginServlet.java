@@ -36,6 +36,8 @@ public class LoginServlet extends HttpServlet {
                         erreurs.add("L'association identifiant mot de passe n'existe pas!");
                     } else {
                         session.setAttribute("id", user.getId());
+                        session.setAttribute("pseudo", user.getPseudo());
+                        session.setAttribute("role", user.getRole());
                         response.sendRedirect("accueil");
                         return;
                     }
