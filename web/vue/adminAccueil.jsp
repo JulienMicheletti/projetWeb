@@ -18,7 +18,7 @@
     </div>
     <div class="col s2 offset-s5">
         <div class="row">
-            <a href="" class="col s12 waves-effect waves-light btn">Liste utilisateurs</a>
+            <a href="ListeUsers" class="col s12 waves-effect waves-light btn">Liste utilisateurs</a>
         </div>
         <div class="row">
             <a href="" class="col s12 waves-effect waves-light btn">Liste produits</a>

@@ -1,5 +1,8 @@
 package servlet;
 
+import dao.UtilisateurDAO;
+import entite.Utilisateur;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,29 +10,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class AccueilServlet extends HttpServlet {
+public class ListeUsersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("vue/error404.jsp").forward(request, response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String page = "vue/error404.jsp";
         String pseudo = (String)session.getAttribute("pseudo");
+        String page = "vue/error404.jsp";
+        ArrayList<String> erreurs = new ArrayList<>();
+        ArrayList<Utilisateur> users = new ArrayList<>();
         if (pseudo != null){
-            int id = (int)session.getAttribute("role");
-            request.setAttribute("pseudo", pseudo);
-            if (id == 0){
-                page = "vue/adminAccueil.jsp";
-            } else if (id == 1){
-                page = "vue/userAccueil.jsp";
-            } else {
-                page = "vue/error404.jsp";
+            try {
+                page = "vue/adminListUsers.jsp";
+                users = UtilisateurDAO.getInstance().getAllUser();
+            } catch (SQLException e) {
+                erreurs.add(e.getMessage());
             }
         } else {
             response.sendRedirect("login");
         }
+        request.setAttribute("users", users);
+        request.setAttribute("erreurs",erreurs);
         request.getRequestDispatcher(page).forward(request, response);
     }
 }

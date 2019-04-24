@@ -39,6 +39,15 @@
         <url-pattern>/accueil</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ListeUsersServlet</servlet-name>
+        <servlet-class>servlet.ListeUsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListeUsersServlet</servlet-name>
+        <url-pattern>/ListeUsers</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>DocFilter</filter-name>
         <filter-class>filter.DocFilter</filter-class>
