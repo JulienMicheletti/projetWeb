@@ -12,13 +12,15 @@ public class Utilisateur {
     private String prenom;
     private String pseudo;
     private String mdp;
+    private int role = 1;
 
-    public Utilisateur(int id, String nom, String prenom, String pseudo, String mdp) {
+    public Utilisateur(int id, String nom, String prenom, String pseudo, String mdp, int role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.pseudo = pseudo;
         this.mdp = mdp;
+        this.role = role;
     }
 
     public Utilisateur(int idUser){
@@ -31,6 +33,7 @@ public class Utilisateur {
             prenom = rs.getString(3);
             pseudo = rs.getString(4);
             mdp = rs.getString(5);
+            role = rs.getInt(6);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -84,12 +87,16 @@ public class Utilisateur {
         this.mdp = mdp;
     }
 
+    public void setRole(int role){ if (role == 0 || role == 1) this.role = role;}
+
+    public int getRole(){return this.role;}
+
     public void save() throws SQLException {
         if(id < 0) {
-            UtilisateurDAO.getInstance().insertQuery("INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `mdp`) VALUES ('" + nom + "', '" + prenom + "', '" + pseudo + "', '" + mdp + "')");
+            UtilisateurDAO.getInstance().insertQuery("INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `mdp`, `role`) VALUES ('" + nom + "', '" + prenom + "', '" + pseudo + "', '" + mdp + "', '" + role +"');");
             id = UtilisateurDAO.getInstance().lastID();
         } else
-            UtilisateurDAO.getInstance().insertQuery("UPDATE `utilisateur` SET `Nom` = '"+ nom +"', `prenom` = '"+ prenom +"', `pseudo` = '"+ pseudo +"', `mdp` = '"+ mdp +"' WHERE `utilisateurs`.`id` = "+ id +";");
+            UtilisateurDAO.getInstance().insertQuery("UPDATE `utilisateur` SET `Nom` = '"+ nom +"', `prenom` = '"+ prenom +"', `pseudo` = '"+ pseudo +"', `mdp` = '"+ mdp +"', `role` = '"+role+"' WHERE `utilisateur`.`id` = "+ id +";");
     }
 
     public void del() throws SQLException {
