@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 24 avr. 2019 à 06:59
+-- Généré le :  mer. 24 avr. 2019 à 09:23
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -47,11 +47,11 @@ INSERT INTO `article` (`id`, `nom`, `stock`, `prix`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `panier`
+-- Structure de la table `commande`
 --
 
-DROP TABLE IF EXISTS `panier`;
-CREATE TABLE IF NOT EXISTS `panier` (
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `utilisateur_ref_id` int(11) NOT NULL,
   `article_ref_id` int(11) NOT NULL,
@@ -62,10 +62,10 @@ CREATE TABLE IF NOT EXISTS `panier` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `panier`
+-- Déchargement des données de la table `commande`
 --
 
-INSERT INTO `panier` (`id`, `utilisateur_ref_id`, `article_ref_id`, `quantite`) VALUES
+INSERT INTO `commande` (`id`, `utilisateur_ref_id`, `article_ref_id`, `quantite`) VALUES
 (1, 1, 1, 1);
 
 -- --------------------------------------------------------
@@ -102,9 +102,9 @@ INSERT INTO `utilisateur` (`id`, `Nom`, `Prenom`, `Pseudo`, `Mdp`, `role`) VALUE
 --
 
 --
--- Contraintes pour la table `panier`
+-- Contraintes pour la table `commande`
 --
-ALTER TABLE `panier`
+ALTER TABLE `commande`
   ADD CONSTRAINT `FK_Article` FOREIGN KEY (`article_ref_id`) REFERENCES `article` (`id`),
   ADD CONSTRAINT `FK_Utilisateur` FOREIGN KEY (`utilisateur_ref_id`) REFERENCES `utilisateur` (`id`);
 COMMIT;

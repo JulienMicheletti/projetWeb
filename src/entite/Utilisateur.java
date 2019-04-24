@@ -12,6 +12,7 @@ public class Utilisateur {
     private String prenom;
     private String pseudo;
     private String mdp;
+    private Panier panier = null;
 
     public Utilisateur(int id, String nom, String prenom, String pseudo, String mdp) {
         this.id = id;
@@ -21,20 +22,15 @@ public class Utilisateur {
         this.mdp = mdp;
     }
 
-    public Utilisateur(int idUser){
+    public Utilisateur(int idUser) throws SQLException{
         ResultSet rs;
-        try {
-            rs = UtilisateurDAO.getInstance().setQuery("select * from Utilisateurs where id = "+idUser);
-            rs.next();
-            id = rs.getInt(1);
-            nom = rs.getString(2);
-            prenom = rs.getString(3);
-            pseudo = rs.getString(4);
-            mdp = rs.getString(5);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        rs = UtilisateurDAO.getInstance().setQuery("select * from Utilisateurs where id = "+idUser);
+        rs.next();
+        id = rs.getInt(1);
+        nom = rs.getString(2);
+        prenom = rs.getString(3);
+        pseudo = rs.getString(4);
+        mdp = rs.getString(5);
     }
 
     public Utilisateur(String nom, String prenom, String pseudo, String mdp) {
@@ -93,6 +89,13 @@ public class Utilisateur {
     }
 
     public void del() throws SQLException {
-        UtilisateurDAO.getInstance().delUtilisateur(id);
+        UtilisateurDAO.getInstance().del(id);
+    }
+
+    public Panier getPanier() throws SQLException {
+        if(panier == null) {
+            panier = new Panier(id);
+        }
+        return panier;
     }
 }
