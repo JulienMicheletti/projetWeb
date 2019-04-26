@@ -22,10 +22,10 @@ public class CommandeDAO extends DAO {
     }
 
     public ArrayList<Commande> getCommandesByUser(int userID) throws SQLException {
-        ResultSet rs = setQuery("SELECT * FROM commande where id='"+userID+"' ORDER BY id");
+        ResultSet rs = setQuery("SELECT * FROM commande where utilisateur_ref_id='"+userID+"' ORDER BY id");
         ArrayList<Commande> array = new ArrayList<>();
         while (rs.next()) {
-            Article article = new Article(rs.getInt(2));
+            Article article = new Article(rs.getInt(3));
             array.add(new Commande(rs.getInt(1),article,rs.getInt(3)));
         }
         return array;

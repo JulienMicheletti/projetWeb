@@ -11,7 +11,7 @@ public class BDDConnexion {
     private static String driver = "com.mysql.jdbc.Driver";
     private static String url = "jdbc:mysql://localhost:3306/projetweb";
     private static String username = "root";
-    private static String pwd = "monsupermotdepasse";
+    private static String pwd = "root";
 
     private BDDConnexion(){
         try {
