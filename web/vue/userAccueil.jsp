@@ -15,10 +15,10 @@
 <div class="row center">
     <div class="col s2 offset-s5">
         <div class="row">
-            <a href="" class="col s12 waves-effect waves-light btn">Liste des produits</a>
+            <a href="articleClient" class="col s12 waves-effect waves-light btn">Liste des produits</a>
         </div>
         <div class="row">
-            <a href="" class="col s12 waves-effect waves-light btn">Mon panier</a>
+            <a href="panierClient" class="col s12 waves-effect waves-light btn">Mon panier</a>
         </div>
     </div>
 </div>

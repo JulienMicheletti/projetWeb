@@ -57,6 +57,27 @@
         <url-pattern>/ModUser</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>ListeArticleServlet</servlet-name>
+        <servlet-class>servlet.ListeArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListeArticleServlet</servlet-name>
+        <url-pattern>/articleClient</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>PanierServlet</servlet-name>
+        <servlet-class>servlet.PanierServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PanierServlet</servlet-name>
+        <url-pattern>/panierClient</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>DocFilter</filter-name>
         <filter-class>filter.DocFilter</filter-class>

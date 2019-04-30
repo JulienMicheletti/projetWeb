@@ -28,7 +28,7 @@ public class Article {
 
     public Article(int idUser) throws SQLException {
         ResultSet rs;
-        rs = UtilisateurDAO.getInstance().setQuery("select * from Utilisateurs where id = "+idUser);
+        rs = UtilisateurDAO.getInstance().setQuery("select * from article where id = "+idUser);
         rs.next();
         id = rs.getInt(1);
         nom = rs.getString(2);
