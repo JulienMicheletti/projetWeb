@@ -48,6 +48,15 @@
         <url-pattern>/ListeUsers</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ModUserServlet</servlet-name>
+        <servlet-class>servlet.ModUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModUserServlet</servlet-name>
+        <url-pattern>/ModUser</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>DocFilter</filter-name>
         <filter-class>filter.DocFilter</filter-class>

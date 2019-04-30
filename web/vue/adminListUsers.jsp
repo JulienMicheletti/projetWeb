@@ -31,6 +31,9 @@
     }
 %>
 <div class="row center">
+    <div class="col s4 offset-s4">
+        <h2 class="card-panel teal lighten-2">Voici la liste des utilisateurs</h2>
+    </div>
 <table class="striped">
     <thead>
     <tr>
@@ -43,11 +46,33 @@
 <%
     users = (ArrayList<Utilisateur>)request.getAttribute("users");
     for (Utilisateur user : users){
+        String id_user = ""+user.getId();
         %>
     <tr>
-        <td><%=user.getPseudo()%></td>
-        <td><%=user.getNom()%></td>
-        <td><%=user.getPrenom()%></td>
+        <form class="formMod" action="ModUser" method="POST">
+            <input id="id_user" name="id_user" type="hidden" value="<%=id_user%>">
+                <td><input id="user_pseudo" name="user_pseudo" value="<%=user.getPseudo()%>" required></td>
+            <td><input id="user_nom" name="user_nom" value="<%=user.getNom()%>" required></td>
+            <td><input id="user_pre" name="user_pre" value="<%=user.getPrenom()%>" required></td>
+            <td><select name="user_role">
+                <%
+                    if (user.getRole() == 1){
+                %>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <%
+                } else {
+                %>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+                <%
+                    }
+                %>
+            </select>
+            </td>
+                <td><input type="submit" name="mod" value="Modifier"></td>
+                <td><input type="submit" name="mod" value="Supprimer"></td>
+        </form>
     </tr>
 <%
     }

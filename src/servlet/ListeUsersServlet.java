@@ -27,7 +27,7 @@ public class ListeUsersServlet extends HttpServlet {
         if (pseudo != null){
             try {
                 page = "vue/adminListUsers.jsp";
-                users = UtilisateurDAO.getInstance().getAllUser();
+                users = UtilisateurDAO.getInstance().getAll();
             } catch (SQLException e) {
                 erreurs.add(e.getMessage());
             }

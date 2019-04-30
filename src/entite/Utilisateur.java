@@ -26,7 +26,7 @@ public class Utilisateur {
 
     public Utilisateur(int idUser) throws SQLException{
         ResultSet rs;
-        rs = UtilisateurDAO.getInstance().setQuery("select * from Utilisateurs where id = "+idUser);
+        rs = UtilisateurDAO.getInstance().setQuery("select * from utilisateur where id = "+idUser);
         rs.next();
         id = rs.getInt(1);
         nom = rs.getString(2);
@@ -88,11 +88,13 @@ public class Utilisateur {
     public int getRole(){return this.role;}
 
     public void save() throws SQLException {
+        System.out.println("save");
         if(id < 0) {
             UtilisateurDAO.getInstance().insertQuery("INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `mdp`, `role`) VALUES ('" + nom + "', '" + prenom + "', '" + pseudo + "', '" + mdp + "', '" + role +"');");
             id = UtilisateurDAO.getInstance().lastID();
-        } else
-            UtilisateurDAO.getInstance().insertQuery("UPDATE `utilisateur` SET `Nom` = '"+ nom +"', `prenom` = '"+ prenom +"', `pseudo` = '"+ pseudo +"', `mdp` = '"+ mdp +"', `role` = '"+role+"' WHERE `utilisateur`.`id` = "+ id +";");
+        } else {
+            UtilisateurDAO.getInstance().insertQuery("UPDATE `utilisateur` SET `Nom` = '" + nom + "', `prenom` = '" + prenom + "', `pseudo` = '" + pseudo + "', `mdp` = '" + mdp + "', `role` = '" + role + "' WHERE `utilisateur`.`id` = " + id + ";");
+        }
     }
 
     public void del() throws SQLException {
