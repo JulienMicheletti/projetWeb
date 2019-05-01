@@ -22,6 +22,7 @@
     <tr>
         <th>Produit</th>
         <th>Quantité</th>
+        <th>Supprimer</th>
     </tr>
 
     <%
@@ -30,8 +31,13 @@
         for (Commande c : commande){
     %>
     <tr>
-        <td><%=c.getArticle().getNom()%></td>
-        <td><%=c.getQuantite()%></td>
+        <form class="formMod" action="ModPanier" method="POST">
+            <input id="id_commande" name="id_commande" type="hidden" value="<%=c.getId()%>">
+
+            <td><%=c.getArticle().getNom()%></td>
+            <td><%=c.getQuantite()%></td>
+            <td><input type="submit" name="action" value="Supprimer"></td>
+        </form>
     </tr>
     <%
         }

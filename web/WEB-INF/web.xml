@@ -77,6 +77,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ModPanierServlet</servlet-name>
+        <servlet-class>servlet.ModPanierServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModPanierServlet</servlet-name>
+        <url-pattern>/ModPanier</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>PanierServlet</servlet-name>
         <servlet-class>servlet.PanierServlet</servlet-class>
     </servlet>

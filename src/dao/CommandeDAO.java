@@ -38,7 +38,7 @@ public class CommandeDAO extends DAO {
         }
         return 0;
     }
-
+    
     public void insertCommandes(int userID, Article article) throws SQLException {
         int taille = getMaxId()+1;
         insertQuery("INSERT INTO commande VALUES("+taille+", "+userID+", "+article.getId()+", "+article.getStock()+")");
