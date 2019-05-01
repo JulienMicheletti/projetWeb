@@ -20,16 +20,23 @@ public class PanierServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String pseudo = (String) session.getAttribute("pseudo");
+        String page = "vue/error404.jsp";
+
         try {
-            CommandeDAO commandeDAO = dao.CommandeDAO.getInstance();
-            HttpSession session = request.getSession();
-            int id = (int)session.getAttribute("id");
-            List<Commande> lu = commandeDAO.getCommandesByUser(id);
-            request.setAttribute("commande", lu);
+            if (pseudo != null) {
+                page = "vue/userPanier.jsp";
+                CommandeDAO commandeDAO = dao.CommandeDAO.getInstance();
+                int id = (int)session.getAttribute("id");
+                List<Commande> lu = commandeDAO.getCommandesByUser(id);
+                request.setAttribute("commande", lu);
+            } else {
+                response.sendRedirect("login");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("vue/userPanier.jsp").forward(request, response);
+        request.getRequestDispatcher(page).forward(request, response);
     }
-
 }

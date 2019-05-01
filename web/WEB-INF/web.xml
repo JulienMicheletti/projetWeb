@@ -67,6 +67,14 @@
         <url-pattern>/articleClient</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AjouterArticleServlet</servlet-name>
+        <servlet-class>servlet.AjouterArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AjouterArticleServlet</servlet-name>
+        <url-pattern>/AjoutArticle</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>PanierServlet</servlet-name>

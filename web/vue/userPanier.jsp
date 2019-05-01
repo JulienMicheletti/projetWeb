@@ -10,10 +10,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Utilisateur - Panier</title>
     <%@include file="entete.jsp"%>
 </head>
 <body>
+
+<div class="col s4 offset-s4">
+    <h2 class="card-panel teal lighten-2">Voici votre panier</h2>
 
 <table border="1">
     <tr>
@@ -34,6 +37,13 @@
         }
     %>
 </table>
-
+<div class="row center">
+    <div class="col s2 offset-s5">
+        <div class="row">
+            <a href="articleClient" class="col s12 waves-effect waves-light btn">Voir la liste des articles</a>
+        </div>
+    </div>
+</div>
+</div>
 </body>
 </html>

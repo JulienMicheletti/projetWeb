@@ -26,8 +26,21 @@ public class CommandeDAO extends DAO {
         ArrayList<Commande> array = new ArrayList<>();
         while (rs.next()) {
             Article article = new Article(rs.getInt(3));
-            array.add(new Commande(rs.getInt(1),article,rs.getInt(3)));
+            array.add(new Commande(rs.getInt(1),article,rs.getInt(4)));
         }
         return array;
+    }
+
+    public int getMaxId() throws SQLException {
+        ResultSet rs = setQuery("SELECT MAX(id) FROM commande");
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+        return 0;
+    }
+
+    public void insertCommandes(int userID, Article article) throws SQLException {
+        int taille = getMaxId()+1;
+        insertQuery("INSERT INTO commande VALUES("+taille+", "+userID+", "+article.getId()+", "+article.getStock()+")");
     }
 }

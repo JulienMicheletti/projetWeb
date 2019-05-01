@@ -30,4 +30,13 @@ public class ArticleDAO extends DAO{
         }
         return array;
     }
+
+    public Article getArticle(int id) throws SQLException {
+        ResultSet rs = setQuery("SELECT * FROM article WHERE id = "+id);
+        if (rs.next()) {
+            Article article = new Article(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getFloat(4));
+            return article;
+        }
+        return null;
+    }
 }
