@@ -16,6 +16,7 @@
     %>
 </head>
 <body>
+<a href="accueil" class="col s12 waves-effect waves-light btn">Retour</a>
 <%
     String username = request.getParameter("username");
     if(username == null)
@@ -30,7 +31,7 @@
 <%
     }
 %>
-<div class="row center">
+<div class="row">
     <div class="col s4 offset-s4">
         <h2 class="card-panel teal lighten-2">Voici la liste des utilisateurs</h2>
     </div>

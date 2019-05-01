@@ -12,7 +12,6 @@ public class Utilisateur {
     private String prenom;
     private String pseudo;
     private String mdp;
-    private Panier panier = null;
     private int role = 1;
 
     public Utilisateur(int id, String nom, String prenom, String pseudo, String mdp, int role) {
@@ -88,7 +87,6 @@ public class Utilisateur {
     public int getRole(){return this.role;}
 
     public void save() throws SQLException {
-        System.out.println("save");
         if(id < 0) {
             UtilisateurDAO.getInstance().insertQuery("INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `mdp`, `role`) VALUES ('" + nom + "', '" + prenom + "', '" + pseudo + "', '" + mdp + "', '" + role +"');");
             id = UtilisateurDAO.getInstance().lastID();
@@ -99,12 +97,5 @@ public class Utilisateur {
 
     public void del() throws SQLException {
         UtilisateurDAO.getInstance().del(id);
-    }
-
-    public Panier getPanier() throws SQLException {
-        if(panier == null) {
-            panier = new Panier(id);
-        }
-        return panier;
     }
 }

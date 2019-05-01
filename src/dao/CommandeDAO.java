@@ -11,7 +11,7 @@ public class CommandeDAO extends DAO {
     private static CommandeDAO instance = null;
 
     private CommandeDAO() {
-        table = "utilisateur";
+        table = "commande";
         cnx = BDDConnexion.getInstance().getCnx();
     }
 

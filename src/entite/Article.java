@@ -68,6 +68,14 @@ public class Article {
         this.prix = prix;
     }
 
+    public void addStock() {
+        stock++;
+    }
+
+    public void dimStock() {
+        stock--;
+    }
+
     public void save() throws SQLException {
         if(id < 0) {
             ArticleDAO.getInstance().insertQuery("INSERT INTO `article` (`nom`, `stock`, `prix`) VALUES ('" + nom + "', '" + stock + "', '" + prix + "')");

@@ -1,6 +1,10 @@
 <%@ page import="entite.Article" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="entite.Commande" %><%--
+<%@ page import="entite.Commande" %>
+<%@ page import="javax.json.JsonReader" %>
+<%@ page import="java.io.StringReader" %>
+<%@ page import="javax.json.Json" %>
+<%@ page import="javax.json.JsonObject" %><%--
   Created by IntelliJ IDEA.
   User: Julien
   Date: 24/04/2019
@@ -18,38 +22,47 @@
 <div class="col s4 offset-s4">
     <h2 class="card-panel teal lighten-2">Voici votre panier</h2>
 
-<table border="1">
-    <tr>
-        <th>Produit</th>
-        <th>Quantité</th>
-        <th>Supprimer</th>
-    </tr>
+    <table border="1">
+        <tr>
+            <th>Produit</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+            <th>Supprimer</th>
+        </tr>
 
-    <%
-        ArrayList<Commande> commande = (ArrayList<Commande>) request.getAttribute("commande");
+        <%
+            Cookie[] panier = request.getCookies();
 
-        for (Commande c : commande){
-    %>
-    <tr>
-        <form class="formMod" action="ModPanier" method="POST">
-            <input id="id_commande" name="id_commande" type="hidden" value="<%=c.getId()%>">
+            for (Cookie c : panier){
+                if(!c.getName().equals("JSESSIONID")) {
+                    JsonReader reader = Json.createReader(new StringReader(c.getValue()));
 
-            <td><%=c.getArticle().getNom()%></td>
-            <td><%=c.getQuantite()%></td>
-            <td><input type="submit" name="action" value="Supprimer"></td>
-        </form>
-    </tr>
-    <%
-        }
-    %>
-</table>
-<div class="row center">
-    <div class="col s2 offset-s5">
-        <div class="row">
-            <a href="articleClient" class="col s12 waves-effect waves-light btn">Voir la liste des articles</a>
+                    JsonObject json = reader.readObject();
+        %>
+        <tr>
+            <form class="formMod" action="ModPanier" method="POST">
+                <input id="id_commande" name="id_commande" type="hidden" value="<%=c.getName()%>">
+
+                <td><%=json.getString("nom")%></td>
+                <td><%=json.getJsonNumber("prixU").bigDecimalValue().floatValue()%></td>
+                <td><%=json.getInt("quantite")%></td>
+                <td><%=(float)(json.getInt("quantite"))*json.getJsonNumber("prixU").bigDecimalValue().floatValue()%></td>
+                <td><input type="submit" name="action" value="Supprimer"></td>
+            </form>
+        </tr>
+        <%
+                }
+            }
+        %>
+    </table>
+    <div class="row center">
+        <div class="col s2 offset-s5">
+            <div class="row">
+                <a href="articleClient" class="col s12 waves-effect waves-light btn">Voir la liste des articles</a>
+            </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

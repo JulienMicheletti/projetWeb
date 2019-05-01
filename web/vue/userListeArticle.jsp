@@ -19,32 +19,34 @@
     <h2 class="card-panel teal lighten-2">Voici la liste des articles</h2>
 
 
-<table border="1">
-    <tr>
-        <th>Produit</th>
-        <th>Prix</th>
-        <th>Quantité</th>
-        <th>Ajouter</th>
-    </tr>
+    <table border="1">
+        <tr>
+            <th>Produit</th>
+            <th>Prix</th>
+            <th>Stock</th>
+            <th>Ajouter</th>
+        </tr>
 
-    <%
-        ArrayList<Article> article = (ArrayList<Article>) request.getAttribute("produits");
-        for (Article u : article){
-    %>
-    <tr>
-        <form class="formMod" action="AjoutArticle" method="POST">
-            <input id="id_article" name="id_article" type="hidden" value="<%=u.getId()%>">
-            <td><%=u.getNom()%></td>
-            <td><%=u.getPrix()%></td>
-            <td><%=u.getStock()%></td>
+        <%
+            ArrayList<Article> article = (ArrayList<Article>) request.getAttribute("produits");
+            for (Article u : article){
+                if(u.getStock() > 0) {
+        %>
+        <tr>
+            <form class="formMod" action="AjoutArticle" method="POST">
+                <input id="id_article" name="id_article" type="hidden" value="<%=u.getId()%>">
+                <td><%=u.getNom()%></td>
+                <td><%=u.getPrix()%></td>
+                <td><%=u.getStock()%></td>
 
-            <td><input type="submit" name="action" value="Ajouter"></td>
-        </form>
-    </tr>
-    <%
-        }
-    %>
-</table>
+                <td><input type="submit" name="action" value="Ajouter"></td>
+            </form>
+        </tr>
+        <%
+                }
+            }
+        %>
+    </table>
 
     <div class="row center">
         <div class="col s2 offset-s5">
