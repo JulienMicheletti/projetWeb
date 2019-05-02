@@ -77,6 +77,7 @@ public class AjouterArticleServlet extends HttpServlet {
                 System.out.println(e.getMessage());
             }
         }
+        response.sendRedirect("articleClient");
 
     }
 

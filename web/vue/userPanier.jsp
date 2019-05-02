@@ -18,11 +18,12 @@
     <%@include file="entete.jsp"%>
 </head>
 <body>
-
-<div class="col s4 offset-s4">
-    <h2 class="card-panel teal lighten-2">Voici votre panier</h2>
-
-    <table border="1">
+<a href="accueil" class="col s12 waves-effect waves-light btn">Retour</a>
+<div class="row">
+    <div class="col s4 offset-s4">
+        <h2 class="card-panel teal lighten-2 center-align">Voici votre panier</h2>
+    </div>
+    <table class="striped">
         <tr>
             <th>Produit</th>
             <th>Prix unitaire</th>
@@ -41,7 +42,7 @@
                     JsonObject json = reader.readObject();
         %>
         <tr>
-            <form class="formMod" action="ModPanier" method="POST">
+            <form action="ModPanier" method="POST">
                 <input id="id_commande" name="id_commande" type="hidden" value="<%=c.getName()%>">
 
                 <td><%=json.getString("nom")%></td>

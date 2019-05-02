@@ -33,7 +33,7 @@
 %>
 <div class="row">
     <div class="col s4 offset-s4">
-        <h2 class="card-panel teal lighten-2">Voici la liste des utilisateurs</h2>
+        <h2 class="card-panel teal lighten-2 center-align">Voici la liste des utilisateurs</h2>
     </div>
 <table class="striped">
     <thead>

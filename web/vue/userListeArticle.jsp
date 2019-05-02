@@ -13,18 +13,17 @@
     <%@include file="entete.jsp"%>
 </head>
 <body>
-
-
-<div class="col s4 offset-s4">
-    <h2 class="card-panel teal lighten-2">Voici la liste des articles</h2>
-
-
-    <table border="1">
+<a href="accueil" class="col s12 waves-effect waves-light btn">Retour</a>
+<div class="row">
+    <div class="col s4 offset-s4">
+        <h2 class="card-panel teal lighten-2 center-align">Voici la liste des articles</h2>
+    </div>
+    <table class="striped">
         <tr>
             <th>Produit</th>
             <th>Prix</th>
             <th>Stock</th>
-            <th>Ajouter</th>
+            <th>Ajouter au panier</th>
         </tr>
 
         <%
@@ -33,7 +32,7 @@
                 if(u.getStock() > 0) {
         %>
         <tr>
-            <form class="formMod" action="AjoutArticle" method="POST">
+            <form action="AjoutArticle" method="POST">
                 <input id="id_article" name="id_article" type="hidden" value="<%=u.getId()%>">
                 <td><%=u.getNom()%></td>
                 <td><%=u.getPrix()%></td>

@@ -12,6 +12,7 @@
     <%@include file="entete.jsp"%>
 </head>
 <body>
+<a href="logout" class="col s12 waves-effect waves-light btn">Déconnexion</a>
 <div class="row center">
     <div class="col s2 offset-s5">
         <div class="row">

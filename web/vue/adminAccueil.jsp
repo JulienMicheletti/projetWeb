@@ -19,7 +19,7 @@
 <a href="logout" class="col s12 waves-effect waves-light btn">Déconnexion</a>
 <div class="row center">
     <div class="col s4 offset-s4">
-        <h2 class="card-panel teal lighten-2">Bienvenue ${pseudo}</h2>
+        <h2 class="card-panel teal lighten-2 center-align">Bienvenue ${pseudo}</h2>
     </div>
     <div class="col s2 offset-s5">
         <div class="row">

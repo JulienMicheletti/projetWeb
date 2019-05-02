@@ -56,5 +56,6 @@ public class ModPanierServlet extends HttpServlet {
                 exist = true;
             }
         }
+        response.sendRedirect("panierClient");
     }
 }
