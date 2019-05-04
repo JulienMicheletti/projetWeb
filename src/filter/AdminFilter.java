@@ -16,9 +16,12 @@ public class AdminFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse)resp;
         HttpSession session = request.getSession();
         String pseudo = (String)session.getAttribute("pseudo");
-        int role = (int)session.getAttribute("role");
-        if (pseudo != null && role == 0){
-            chain.doFilter(req, resp);
+        if (pseudo != null){
+            int role = (int)session.getAttribute("role");
+            if (role == 0)
+                chain.doFilter(req, resp);
+            else
+                ((HttpServletResponse) resp).sendRedirect("/projetWeb_war_exploded/");
         } else {
             ((HttpServletResponse) resp).sendRedirect("/projetWeb_war_exploded/");
         }

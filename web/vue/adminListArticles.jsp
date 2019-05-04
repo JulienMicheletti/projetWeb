@@ -53,10 +53,10 @@
         %>
     <tr>
         <form class="formMod" action="ModArticle" method="POST">
-            <input id="id_article" name="id_article" type="hidden" value="<%=id_article%>">
-            <td><input id="article_nom" name="article_nom" value="<%=article.getNom()%>" required></td>
-            <td><input type="number" min="1" id="article_qte" name="article_qte" value="<%=article.getStock()%>" required></td>
-            <td><input type="number" id="article_prix" name="article_prix" value="<%=article.getPrix()%>" required></td>
+            <input name="id_article" type="hidden" value="<%=id_article%>">
+            <td><input name="article_nom" value="<%=article.getNom()%>" required></td>
+            <td><input type="number" min="1" name="article_qte" value="<%=article.getStock()%>" required></td>
+            <td><input type="number" name="article_prix" value="<%=article.getPrix()%>" required></td>
             </td>
                 <td><input type="submit" name="mod" value="Modifier"></td>
                 <td><input type="submit" name="mod" value="Supprimer"></td>
@@ -81,9 +81,9 @@
         <tbody>
         <tr>
             <form class="formAdd" action="addArticle" method="POST">
-                <td><input id="nom_article" name="article_nom" placeholder="Nom" required></td>
-                <td><input type="number" min="1" id="qte_article" name="article_qte" placeholder="Stock" required></td>
-                <td><input type="number" id="prix_article" name="article_prix" placeholder="Prix" required></td>
+                <td><input name="article_nom" placeholder="Nom" required></td>
+                <td><input type="number" min="1" name="article_qte" placeholder="Stock" required></td>
+                <td><input type="number" name="article_prix" placeholder="Prix" required></td>
                 <td><input type="submit" name="mod" value="Ajouter"></td>
             </form>
         </tr>

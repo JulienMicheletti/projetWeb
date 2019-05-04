@@ -1,5 +1,6 @@
 package servlet;
 
+import dao.ArticleDAO;
 import dao.UtilisateurDAO;
 import entite.Article;
 import entite.Utilisateur;
@@ -18,15 +19,14 @@ public class ModArticleServlet extends HttpServlet {
         String action = request.getParameter("mod");
         String article_id = request.getParameter("id_article");
         String article_nom = request.getParameter("article_nom");
-        String article_prix = request.getParameter("article_qte");
-        String article_qte = request.getParameter("article_prix");
+        String article_prix = request.getParameter("article_prix");
+        String article_qte = request.getParameter("article_qte");
         int id = Integer.parseInt(article_id);
-        int prix = Integer.parseInt(article_prix);
-        int qte = Integer.parseInt(article_qte);
-
+        int prix = (int)Float.parseFloat(article_prix);
+        int qte = (int)Float.parseFloat(article_qte);
         try {
             if (action.equals("Supprimer")) {
-                UtilisateurDAO.getInstance().del(id);
+                ArticleDAO.getInstance().del(id);
                 response.getWriter().write("Supprimer");
             } else {
                 Article article = new Article(id);

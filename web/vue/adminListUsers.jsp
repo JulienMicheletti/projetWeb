@@ -53,20 +53,20 @@
         %>
     <tr>
         <form class="formMod" action="ModUser" method="POST">
-            <input id="id_user" name="id_user" type="hidden" value="<%=id_user%>">
-                <td><input id="user_pseudo" name="user_pseudo" value="<%=user.getPseudo()%>" required></td>
-            <td><input id="user_nom" name="user_nom" value="<%=user.getNom()%>" required></td>
-            <td><input id="user_pre" name="user_pre" value="<%=user.getPrenom()%>" required></td>
-            <td><select id="user_role" name="user_role">
+            <input name="id_user" type="hidden" value="<%=id_user%>">
+                <td><input name="user_pseudo" value="<%=user.getPseudo()%>" required></td>
+            <td><input name="user_nom" value="<%=user.getNom()%>" required></td>
+            <td><input name="user_pre" value="<%=user.getPrenom()%>" required></td>
+            <td><select class="browser-default" name="user_role">
                 <%
                     if (user.getRole() == 1){
                 %>
-                <option value="user">User</option>
+                <option value="user" selected>User</option>
                 <option value="admin">Admin</option>
                 <%
                 } else {
                 %>
-                <option value="admin">Admin</option>
+                <option value="admin" selected>Admin</option>
                 <option value="user">User</option>
                 <%
                     }
@@ -98,10 +98,10 @@
         <tbody>
         <tr>
             <form class="formAdd" action="addUser" method="POST">
-                <td><input id="pseudo_user" name="user_pseudo" placeholder="Pseudo" required></td>
-                <td><input id="nom_user" name="user_nom" placeholder="Nom" required></td>
-                <td><input id="pre_user" name="user_pre" placeholder="Prénom" required></td>
-                <td><input id="pass_user" name="user_pass" type="password" placeholder="Mot de passe" required></td>
+                <td><input name="user_pseudo" placeholder="Pseudo" required></td>
+                <td><input name="user_nom" placeholder="Nom" required></td>
+                <td><input name="user_pre" placeholder="Prénom" required></td>
+                <td><input name="user_pass" type="password" placeholder="Mot de passe" required></td>
                 <td><label>
                     <input type="checkbox" name="user_role"/>
                     <span>Admin</span>
