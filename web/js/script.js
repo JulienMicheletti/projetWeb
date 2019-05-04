@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    //Appliquer le CSS Materialize sur les <select>
+    $('select').formSelect();
+    //Modifier ou Supprimer un utilisateur
     $(".formMod").submit(function (e) {
         var parent = $(this).parent();
         e.preventDefault();

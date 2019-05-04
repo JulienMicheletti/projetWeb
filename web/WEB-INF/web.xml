@@ -57,6 +57,14 @@
         <url-pattern>/ModUser</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ModArticleServlet</servlet-name>
+        <servlet-class>servlet.ModArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModArticleServlet</servlet-name>
+        <url-pattern>/ModArticle</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>ListeArticleServlet</servlet-name>
@@ -94,15 +102,57 @@
         <url-pattern>/panierClient</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>servlet.AddUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/addUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddArticleServlet</servlet-name>
+        <servlet-class>servlet.AddArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddArticleServlet</servlet-name>
+        <url-pattern>/addArticle</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AdminArticleServlet</servlet-name>
+        <servlet-class>servlet.AdminArticlesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminArticleServlet</servlet-name>
+        <url-pattern>/adminArticles</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>DocFilter</filter-name>
         <filter-class>filter.DocFilter</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>DocFilter</filter-name>
         <url-pattern>/vue/*</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/addArticle</url-pattern>
+        <url-pattern>/addUser</url-pattern>
+        <url-pattern>/adminArticles</url-pattern>
+        <url-pattern>/ListeUsers</url-pattern>
+        <url-pattern>/ModArticle</url-pattern>
+        <url-pattern>/ModUser</url-pattern>
     </filter-mapping>
 
     <error-page>

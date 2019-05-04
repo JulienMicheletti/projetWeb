@@ -41,11 +41,13 @@
         <th>Pseudo</th>
         <th>Nom</th>
         <th>Prenom</th>
+        <th>Role</th>
     </tr>
     </thead>
     <tbody>
 <%
     users = (ArrayList<Utilisateur>)request.getAttribute("users");
+    if (users != null)
     for (Utilisateur user : users){
         String id_user = ""+user.getId();
         %>
@@ -55,7 +57,7 @@
                 <td><input id="user_pseudo" name="user_pseudo" value="<%=user.getPseudo()%>" required></td>
             <td><input id="user_nom" name="user_nom" value="<%=user.getNom()%>" required></td>
             <td><input id="user_pre" name="user_pre" value="<%=user.getPrenom()%>" required></td>
-            <td><select name="user_role">
+            <td><select id="user_role" name="user_role">
                 <%
                     if (user.getRole() == 1){
                 %>
@@ -80,6 +82,36 @@
 %>
     </tbody>
 </table>
+    <div class="col s4 offset-s4">
+        <h2 class="card-panel teal lighten-2 center-align">Ajouter un utilisateur</h2>
+    </div>
+    <table class="striped">
+        <thead>
+        <tr>
+            <th>Pseudo</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Mot de passe</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <form class="formAdd" action="addUser" method="POST">
+                <td><input id="pseudo_user" name="user_pseudo" placeholder="Pseudo" required></td>
+                <td><input id="nom_user" name="user_nom" placeholder="Nom" required></td>
+                <td><input id="pre_user" name="user_pre" placeholder="Prénom" required></td>
+                <td><input id="pass_user" name="user_pass" type="password" placeholder="Mot de passe" required></td>
+                <td><label>
+                    <input type="checkbox" name="user_role"/>
+                    <span>Admin</span>
+                </label>
+                </td>
+                <td><input type="submit" name="mod" value="Ajouter"></td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

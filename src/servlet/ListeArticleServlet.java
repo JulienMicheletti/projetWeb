@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-@WebServlet(name = "articleClient")
 public class ListeArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }

@@ -26,7 +26,7 @@
             <a href="ListeUsers" class="col s12 waves-effect waves-light btn">Liste utilisateurs</a>
         </div>
         <div class="row">
-            <a href="" class="col s12 waves-effect waves-light btn">Liste produits</a>
+            <a href="adminArticles" class="col s12 waves-effect waves-light btn">Liste produits</a>
         </div>
     </div>
     <%
