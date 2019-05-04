@@ -13,19 +13,23 @@
     <%@include file="entete.jsp"%>
 </head>
 <body>
-<a href="accueil" class="col s12 waves-effect waves-light btn">Retour</a>
-<div class="row">
-    <div class="col s4 offset-s4">
-        <h2 class="card-panel teal lighten-2 center-align">Voici la liste des articles</h2>
+<div class="back">
+    <a href="accueil" class="button bBack">Retour</a>
+</div>
+<div class="scroll">
+    <div class="pseudo">
+        <h2>Voici la liste des articles</h2>
     </div>
     <table class="striped">
-        <tr>
-            <th>Produit</th>
-            <th>Prix</th>
-            <th>Stock</th>
-            <th>Ajouter au panier</th>
-        </tr>
-
+        <thead>
+            <tr>
+                <th class="min">Produit</th>
+                <th class="min">Prix</th>
+                <th class="min">Stock</th>
+                <th></th>
+            </tr>
+        <thead>
+        <tbody>
         <%
             ArrayList<Article> article = (ArrayList<Article>) request.getAttribute("produits");
             for (Article u : article){
@@ -34,25 +38,22 @@
         <tr>
             <form action="AjoutArticle" method="POST">
                 <input id="id_article" name="id_article" type="hidden" value="<%=u.getId()%>">
-                <td><%=u.getNom()%></td>
-                <td><%=u.getPrix()%></td>
-                <td><%=u.getStock()%></td>
+                <td class="min"><%=u.getNom()%></td>
+                <td class="min"><%=u.getPrix()%></td>
+                <td class="min"><%=u.getStock()%></td>
 
-                <td><input type="submit" name="action" value="Ajouter"></td>
+                <td><input type="submit" name="action" value="Ajouter au panier"></td>
             </form>
         </tr>
         <%
                 }
             }
         %>
+        </tbody>
     </table>
 
-    <div class="row center">
-        <div class="col s2 offset-s5">
-            <div class="row">
-                <a href="panierClient" class="col s12 waves-effect waves-light btn">Voir le panier</a>
-            </div>
-        </div>
+    <div class="block mt">
+            <a href="panierClient" class="button bBack">Voir le panier</a>
     </div>
 </div>
 </body>

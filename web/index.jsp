@@ -12,15 +12,9 @@
     <%@include file="vue/entete.jsp"%>
   </head>
   <body>
-  <div class="row center">
-    <div class="col s2 offset-s5">
-      <div class="row">
-      <a href="login" class="col s12 waves-effect waves-light btn">Login</a>
-      </div>
-      <div class="row">
-      <a href="register" class="col s12 waves-effect waves-light btn">Register</a>
-      </div>
-    </div>
+  <div class="block center">
+      <a href="login" class="button">Login</a>
+      <a href="register" class="button marginT10">Register</a>
   </div>
   </body>
 </html>

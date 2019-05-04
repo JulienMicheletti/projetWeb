@@ -32,15 +32,17 @@
 <%
     }
 %>
-<a href="/projetWeb_war_exploded/" class="col s12 waves-effect waves-light btn">Retour</a>
-    <form class="row offset-s3" action="" method="post">
-        <div class="col s6 offset-s3">
-            <label for="nom">Nom :</label><input type="text" name="nom" id="nom" value="<%=info[0]%>">
-            <label for="prenom">Prénom :</label><input type="text" name="prenom" id="prenom" value="<%=info[1]%>">
-            <label for="username">Username :</label><input   type="text" name="username" id="username" value="<%=info[2]%>">
-            <label for="pass">Pass :</label><input type="password" name="pass" id="pass">
-            <button class="waves-effect waves-light btn" type="submit"> Envoyer</button>
-        </div>
+<div class="back">
+    <a href="/projetWeb_war_exploded/" class="button bBack">Retour</a>
+</div>
+<div class="">
+    <form class="form" action="" method="post">
+        <div class="input marginT10"><label for="nom">Nom :</label><input type="text" name="nom" id="nom" value="<%=info[0]%>"></div>
+        <div class="input marginT10"><label for="prenom">Prénom :</label><input type="text" name="prenom" id="prenom" value="<%=info[1]%>"></div>
+        <div class="input marginT10"><label for="username">Username :</label><input   type="text" name="username" id="username" value="<%=info[2]%>"></div>
+        <div class="input marginT10"><label for="pass">Pass :</label><input type="password" name="pass" id="pass"></div>
+        <div><button class="button marginT10" type="submit"> Envoyer</button></div>
     </form>
+</div>
 </body>
 </html>

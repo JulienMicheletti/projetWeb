@@ -12,15 +12,16 @@
     <%@include file="entete.jsp"%>
 </head>
 <body>
-<a href="logout" class="col s12 waves-effect waves-light btn">Déconnexion</a>
-<div class="row center">
-    <div class="col s2 offset-s5">
-        <div class="row">
-            <a href="articleClient" class="col s12 waves-effect waves-light btn">Liste des produits</a>
-        </div>
-        <div class="row">
-            <a href="panierClient" class="col s12 waves-effect waves-light btn">Mon panier</a>
-        </div>
+<div class="back">
+    <a href="logout" class="button bBack">Déconnexion</a>
+</div>
+<div class="">
+    <div class="pseudo">
+        <h2 class="">Bienvenue ${pseudo}</h2>
+    </div>
+    <div class="block">
+        <a href="articleClient" class="button">Liste des produits</a>
+        <a href="panierClient" class="button marginT10">Mon panier</a>
     </div>
 </div>
 </body>

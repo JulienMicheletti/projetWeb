@@ -1,0 +1,29 @@
+@startuml
+
+object Article {
+    PK int id
+    varchar nom
+    int stock
+    float prix
+}
+
+object Commande {
+    PK int id
+    FK int utilisateur_ref_id
+    FK int article_ref_id
+    int quantite
+}
+
+object Utilisateur {
+    PK int id
+    varchar nom
+    varchar prenom
+    varchar pseudo
+    varchar mdp
+    int role
+}
+
+Article "1" --- "0-*" Commande:   \tArticle.id = article_ref_id
+Commande "0-*" --- "1" Utilisateur: \tUtilisateur.id = utilisateur_ref_id
+
+@enduml

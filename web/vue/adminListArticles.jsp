@@ -17,7 +17,9 @@
     %>
 </head>
 <body>
-<a href="accueil" class="col s12 waves-effect waves-light btn">Retour</a>
+<div class="back">
+    <a href="accueil" class="button bBack">Retour</a>
+</div>
 <%
     String username = request.getParameter("username");
     if(username == null)
@@ -32,16 +34,44 @@
 <%
     }
 %>
-<div class="row">
-    <div class="col s4 offset-s4">
-        <h2 class="card-panel teal lighten-2 center-align">Voici la liste des articles</h2>
+
+
+
+<div class="scroll">
+    <div class="pseudo">
+        <h2>Ajouter un article</h2>
     </div>
-<table class="striped">
+    <table class="striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Stock</th>
+            <th>Prix</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <form class="formAdd" action="addArticle" method="POST">
+                <td><input name="article_nom" placeholder="Nom" required></td>
+                <td><input type="number" min="1" name="article_qte" placeholder="Stock" required></td>
+                <td><input type="number" name="article_prix" placeholder="Prix" required></td>
+                <td><input type="submit" name="mod" value="Ajouter"></td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+    <div class="pseudo">
+        <h2>Voici la liste des articles</h2>
+    </div>
+<table>
     <thead>
     <tr>
         <th>Nom</th>
         <th>Stock</th>
         <th>Prix</th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -67,28 +97,6 @@
 %>
     </tbody>
 </table>
-    <div class="col s4 offset-s4">
-        <h2 class="card-panel teal lighten-2 center-align">Ajouter un article</h2>
-    </div>
-    <table class="striped">
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Stock</th>
-            <th>Prix</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <form class="formAdd" action="addArticle" method="POST">
-                <td><input name="article_nom" placeholder="Nom" required></td>
-                <td><input type="number" min="1" name="article_qte" placeholder="Stock" required></td>
-                <td><input type="number" name="article_prix" placeholder="Prix" required></td>
-                <td><input type="submit" name="mod" value="Ajouter"></td>
-            </form>
-        </tr>
-        </tbody>
-    </table>
 </div>
 </body>
 </html>

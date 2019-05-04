@@ -16,29 +16,17 @@
     <%@include file="entete.jsp"%>
 </head>
 <body>
-<a href="logout" class="col s12 waves-effect waves-light btn">Déconnexion</a>
-<div class="row center">
-    <div class="col s4 offset-s4">
-        <h2 class="card-panel teal lighten-2 center-align">Bienvenue ${pseudo}</h2>
+<div class="back">
+    <a href="logout" class="button bBack">Déconnexion</a>
+</div>
+<div class="">
+    <div class="pseudo">
+        <h2 class="">Bienvenue ${pseudo}</h2>
     </div>
-    <div class="col s2 offset-s5">
-        <div class="row">
-            <a href="ListeUsers" class="col s12 waves-effect waves-light btn">Liste utilisateurs</a>
-        </div>
-        <div class="row">
-            <a href="adminArticles" class="col s12 waves-effect waves-light btn">Liste produits</a>
-        </div>
+    <div class="block">
+        <a href="ListeUsers" class="button">Liste utilisateurs</a>
+        <a href="adminArticles" class="button marginT10">Liste produits</a>
     </div>
-    <%
-        Cookie[] list = request.getCookies();
-        for (Cookie c : list) {
-            if(!c.getName().equals("JSESSIONID")) {
-    %>
-    <p><%=c.getName()%>: <%=c.getValue()%></p>
-    <%
-            }
-        }
-    %>
 </div>
 </body>
 </html>

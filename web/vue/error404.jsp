@@ -12,8 +12,10 @@
     <%@include file="entete.jsp"%>
 </head>
 <body>
-<div class="row center">
-<a href="/projetWeb_war_exploded/" class="col s6 offset-s3 center waves-effect waves-light btn">Oups y a personne ici!</a>
+<div class="center">
+    <div class="back">
+        <a href="/projetWeb_war_exploded/" class="button bBack">Oups y a personne ici!</a>
+    </div>
 </div>
 </body>
 </html>

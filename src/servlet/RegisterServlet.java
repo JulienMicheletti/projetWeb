@@ -1,14 +1,12 @@
 package servlet;
 
 import dao.UtilisateurDAO;
+import entite.Panier;
 import entite.Utilisateur;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,11 +38,25 @@ public class RegisterServlet extends HttpServlet {
                     if(UtilisateurDAO.getInstance().existPseudo(username))
                         erreurs.add("Le pseudo existe déjà!");
                     else {
+                        Cookie[] cookies = request.getCookies();
+                        //Supprime les anciens cookies
+                        for (Cookie cookie : cookies) {
+                            cookie.setMaxAge(0);
+                            response.addCookie(cookie);
+                        }
+
                         Utilisateur user = new Utilisateur(nom, prenom, username, mdp);
 
                         user.save();
                         session.setAttribute("id", user.getId());
-                        response.sendRedirect("vue/test.jsp");
+                        session.setAttribute("pseudo", user.getPseudo());
+                        session.setAttribute("role", user.getRole());
+                        if(user.getRole() == 1) {
+                            Panier p = new Panier(user.getId());
+                            for (Cookie c : p.toCookies())
+                                response.addCookie(c);
+                        }
+                        response.sendRedirect("accueil ");
                         return;
                     }
                 } catch (SQLException e) {

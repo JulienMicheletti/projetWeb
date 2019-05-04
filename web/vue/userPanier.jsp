@@ -18,20 +18,24 @@
     <%@include file="entete.jsp"%>
 </head>
 <body>
-<a href="accueil" class="col s12 waves-effect waves-light btn">Retour</a>
-<div class="row">
-    <div class="col s4 offset-s4">
-        <h2 class="card-panel teal lighten-2 center-align">Voici votre panier</h2>
+<div class="back">
+    <a href="accueil" class="button bBack">Retour</a>
+</div>
+<div class="scroll">
+    <div class="pseudo">
+        <h2>Voici votre panier</h2>
     </div>
     <table class="striped">
+        <thead>
         <tr>
-            <th>Produit</th>
-            <th>Prix unitaire</th>
-            <th>Quantité</th>
-            <th>Prix</th>
-            <th>Supprimer</th>
+            <th class="min">Produit</th>
+            <th class="min">Prix unitaire</th>
+            <th class="min">Quantité</th>
+            <th class="min">Prix</th>
+            <th></th>
         </tr>
-
+        </thead>
+        <tbody>
         <%
             Cookie[] panier = request.getCookies();
 
@@ -45,24 +49,21 @@
             <form action="ModPanier" method="POST">
                 <input id="id_commande" name="id_commande" type="hidden" value="<%=c.getName()%>">
 
-                <td><%=json.getString("nom")%></td>
-                <td><%=json.getJsonNumber("prixU").bigDecimalValue().floatValue()%></td>
-                <td><%=json.getInt("quantite")%></td>
-                <td><%=(float)(json.getInt("quantite"))*json.getJsonNumber("prixU").bigDecimalValue().floatValue()%></td>
-                <td><input type="submit" name="action" value="Supprimer"></td>
+                <td class="min"><%=json.getString("nom")%></td>
+                <td class="min"><%=json.getJsonNumber("prixU").bigDecimalValue().floatValue()%></td>
+                <td class="min"><%=json.getInt("quantite")%></td>
+                <td class="min"><%=(float)(json.getInt("quantite"))*json.getJsonNumber("prixU").bigDecimalValue().floatValue()%></td>
+                <td><input type="submit" name="action" value="Retirer"></td>
             </form>
         </tr>
         <%
                 }
             }
         %>
+        </tbody>
     </table>
-    <div class="row center">
-        <div class="col s2 offset-s5">
-            <div class="row">
-                <a href="articleClient" class="col s12 waves-effect waves-light btn">Voir la liste des articles</a>
-            </div>
-        </div>
+    <div class="block mt">
+        <a href="articleClient" class="button bBack">Voir la liste des articles</a>
     </div>
 </div>
 </body>
