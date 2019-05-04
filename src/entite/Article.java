@@ -72,6 +72,8 @@ public class Article {
         stock++;
     }
 
+    public void addStock(int toAdd){ stock += toAdd; }
+
     public void dimStock() {
         stock--;
     }

@@ -5,6 +5,7 @@ import entite.Commande;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CommandeDAO extends DAO {
@@ -38,7 +39,12 @@ public class CommandeDAO extends DAO {
         }
         return 0;
     }
-    
+
+    public void del(int article_id) throws SQLException{
+        Statement stmt = cnx.createStatement();
+        stmt.executeUpdate("DELETE FROM `"+table+"` WHERE `"+ table +"`.`article_ref_id` = "+article_id);
+    }
+
     public void insertCommandes(int userID, Article article) throws SQLException {
         int taille = getMaxId()+1;
         insertQuery("INSERT INTO commande VALUES("+taille+", "+userID+", "+article.getId()+", "+article.getStock()+")");

@@ -52,19 +52,11 @@ public class Panier {
         }
     }
 
-    public void delCommande(Article a) throws SQLException {
+    public void delCommande() throws SQLException {
         for (int i = 0; i < getNbCom(); i++) {
-            if(commandes.get(i).getArticle().getId() == a.getId()) {
-                commandes.get(i).dimQuantite();
-                a.addStock();
-                a.save();
-                if(commandes.get(i).getQuantite() == 0) {
-                    commandes.get(i).del();
-                    commandes.remove(i);
-                } else
-                    commandes.get(i).save(userId);
-                i = getNbCom();
-            }
+            commandes.get(i).dimAll();
+            commandes.get(i).del();
+            commandes.remove(i);
         }
     }
 

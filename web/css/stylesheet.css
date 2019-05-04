@@ -81,6 +81,7 @@ table {
 }
 
 .button:hover, input[type="submit"]:hover {
+    cursor: pointer;
     background-color: #5ec1ff;
 }
 
@@ -127,6 +128,7 @@ table {
 .mt {
     margin-top: 20px;
 }
+
 
 input, select {
     padding-top: 10px;

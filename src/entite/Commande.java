@@ -68,6 +68,12 @@ public class Commande {
         article.save();
     }
 
+    public void dimAll() throws  SQLException {
+        article.addStock(quantite);
+        quantite = 0;
+        article.save();
+    }
+
     public void save(int userId) throws SQLException {
         if (id < 0) {
             CommandeDAO.getInstance().insertQuery("INSERT INTO `commande` (`utilisateur_ref_id`, `article_ref_id`, `quantite`) VALUES ('" + userId + "', '" + article.getId() + "', '" + quantite + "')");

@@ -1,6 +1,7 @@
 package servlet;
 
 import dao.UtilisateurDAO;
+import entite.Panier;
 import entite.Utilisateur;
 
 import javax.servlet.ServletException;
@@ -24,6 +25,10 @@ public class ModUserServlet extends HttpServlet {
         int id = Integer.parseInt(user_id);
         try {
             if (action.equals("Supprimer")) {
+                Panier panier = new Panier(id);
+                if (panier != null){
+                    panier.delCommande();
+                }
                 UtilisateurDAO.getInstance().del(id);
                 response.getWriter().write("Supprimer");
             } else {

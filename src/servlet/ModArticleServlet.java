@@ -1,6 +1,7 @@
 package servlet;
 
 import dao.ArticleDAO;
+import dao.CommandeDAO;
 import dao.UtilisateurDAO;
 import entite.Article;
 import entite.Utilisateur;
@@ -26,6 +27,7 @@ public class ModArticleServlet extends HttpServlet {
         int qte = (int)Float.parseFloat(article_qte);
         try {
             if (action.equals("Supprimer")) {
+                CommandeDAO.getInstance().del(id);
                 ArticleDAO.getInstance().del(id);
                 response.getWriter().write("Supprimer");
             } else {
