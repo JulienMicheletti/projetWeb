@@ -17,9 +17,6 @@
     %>
 </head>
 <body>
-<div class="back">
-    <a href="accueil" class="button bBack">Retour</a>
-</div>
 <%
     String username = request.getParameter("username");
     if(username == null)
@@ -30,12 +27,13 @@
         erreurs = (ArrayList<String>)request.getAttribute("erreurs");
 
     for(String e : erreurs) {%>
-<div class="red"><%=e%></div>
+<div class="button red"><%=e%></div>
 <%
     }
 %>
-
-
+<div class="back">
+    <a href="accueil" class="button bBack">Retour</a>
+</div>
 
 <div class="scroll">
     <div class="pseudo">
@@ -55,7 +53,7 @@
             <form class="formAdd" action="addArticle" method="POST">
                 <td><input name="article_nom" placeholder="Nom" required></td>
                 <td><input type="number" min="1" name="article_qte" placeholder="Stock" required></td>
-                <td><input type="number" name="article_prix" placeholder="Prix" required></td>
+                <td><input type="number" step="0.01" name="article_prix" placeholder="Prix" required></td>
                 <td><input type="submit" name="mod" value="Ajouter"></td>
             </form>
         </tr>
@@ -86,7 +84,7 @@
             <input name="id_article" type="hidden" value="<%=id_article%>">
             <td><input name="article_nom" value="<%=article.getNom()%>" required></td>
             <td><input type="number" min="1" name="article_qte" value="<%=article.getStock()%>" required></td>
-            <td><input type="number" name="article_prix" value="<%=article.getPrix()%>" required></td>
+            <td><input type="number" step="0.01" name="article_prix" value="<%=article.getPrix()%>" required></td>
             </td>
                 <td><input type="submit" name="mod" value="Modifier"></td>
                 <td><input type="submit" name="mod" value="Supprimer"></td>

@@ -1,0 +1,180 @@
+@startuml
+package dao #9FFFD5{
+    class ArticleDAO extends DAO{
+        private static ArticleDAO instance
+        private ArticleDAO();
+        public static ArticleDAO getInstance()
+        public ArrayList<Article> getAllOrderBy(String orderBy) throws SQLException
+        public Article getArticle(int id) throws SQLException
+    }
+
+    class BDDConnexion <<Singleton>> {
+        private static BDDConnexion instance = null;
+        private Connection cnx;
+        private BDDConnexion()
+        public Connection getCnx()
+        public void closeCnx() throws SQLException
+        public static BDDConnexion getInstance()
+    }
+
+    class CommandeDAO {
+        private static CommandeDAO instance
+        private CommandeDAO()
+        public static CommandeDAO getInstance()
+        public ArrayList<Commande> getCommandesByUser(int userID) throws SQLException
+        public int getMaxId() throws SQLException
+        public void del(int article_id) throws SQLException
+        public void insertCommandes(int userID, Article article) throws SQLException
+    }
+
+    class UtilisateurDAO{
+        private static UtilisateurDAO instance
+        private UtilisateurDAO()
+        public static UtilisateurDAO getInstance()
+        public ArrayList<Utilisateur> getAll() throws SQLException
+        public Utilisateur identification(String username, String password) throws SQLException
+        public boolean existPseudo(String pseudo) throws SQLException
+    }
+
+    abstract class DAO <<Singleton>> {
+        protected Connection cnx
+        protected String table
+        public ResultSet setQuery(String query) throws SQLException
+        public void insertQuery(String query) throws SQLException
+        public void del(int id) throws SQLException
+        public int lastID() throws SQLException
+    }
+
+    UtilisateurDAO -right-|> DAO
+    CommandeDAO -left-|> DAO
+    UtilisateurDAO -[hidden]down- CommandeDAO
+    CommandeDAO -[hidden]down- BDDConnexion
+
+
+}
+
+package entite #8678FF {
+    class Article {
+        private int id
+        private String nom
+        private int stock
+        private float prix
+
+        public Article(int id, String nom, int stock, float prix)
+        public Article(String nom, int stock, float prix)
+        public Article(int idUser) throws SQLException
+        public int getId()
+        public void setId(int id)
+        public String getNom()
+        public void setNom(String nom)
+        public int getStock()
+        public void setStock(int stock)
+        public float getPrix()
+        public void setPrix(float prix)
+        public void addStock()
+        public void addStock(int toAdd)
+        public void save() throws SQLException
+        public void del() throws SQLException
+    }
+
+    class Commande {
+        private int id
+        private int quantite
+        public Commande(int id, Article article, int quantite)
+        public Commande(int id) throws SQLException
+        public Commande(Article article, int quantite)
+        public int getId()
+        public void setId(int id)
+        public Article getArticle()
+        public void setArticle(Article article)
+        public int getQuantite()
+        public void setQuantite(int quantite)
+        public void addQuantite() throws SQLException
+        public  void dimQuantite() throws SQLException
+        public void dimAll() throws  SQLException
+        public void save(int userId) throws SQLException
+        public void del() throws  SQLException
+    }
+
+    Commande -right- "1" Article
+
+    class Panier {
+        private int userId
+        public Panier(int userId) throws SQLException
+        public int getNbCom()
+        public ArrayList<Commande> getCommandes()
+        public void setCommandes(ArrayList<Commande> commandes)
+        public void addCommande(Article a) throws SQLException
+        public void delCommande() throws SQLException
+        public ArrayList<Cookie> toCookies()
+    }
+
+    Panier -down- "*" Commande
+
+    class Utilisateur {
+        private int id
+        private String nom
+        private String prenom
+        private String pseudo
+        private String mdp
+        private int role
+        public Utilisateur(int id, String nom, String prenom, String pseudo, String mdp, int role)
+        public Utilisateur(int idUser) throws SQLException
+        public Utilisateur(String nom, String prenom, String pseudo, String mdp)
+        public int getId()
+        public void setId(int id)
+        public String getNom()
+        public void setNom(String nom)
+        public String getPrenom()
+        public void setPrenom(String prenom)
+        public String getPseudo()
+        public void setPseudo(String pseudo)
+        public String getMdp()
+        public void setMdp(String mdp)
+        public void setRole(int role)
+        public int getRole()
+        public void save() throws SQLException
+        public void del() throws SQLException
+    }
+}
+
+package filter #FF6F5E {
+        class AdminFilter implements Filter {
+            public void destroy()
+            public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException
+        }
+
+        class DocFilter implements Filter {
+            public void destroy()
+            public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException
+            public void init(FilterConfig config) throws ServletException
+        }
+}
+
+package servlet #6DAFFF {
+    class AccueilServlet extends HttpServlet
+    class AddArticleServlet extends HttpServlet
+    class AddUserServlet extends HttpServlet
+    class AdminArticlesServlet extends HttpServlet
+    class AjouterArticleServlet extends HttpServlet
+    class ListeArticleServlet extends HttpServlet
+    class ListeUsersServlet extends HttpServlet
+    class LoginServlet extends HttpServlet
+    class LogoutServlet extends HttpServlet
+    class ModArticleServlet extends HttpServlet
+    class ModPanierServlet extends HttpServlet
+    class ModUserServlet extends HttpServlet
+    class PanierServlet extends HttpServlet
+    class RegisterServlet extends HttpServlet
+    class HttpServlet {
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    }
+}
+
+ArticleDAO -[hidden]down- Utilisateur
+Commande -[hidden]left- AccueilServlet
+AdminFilter -[hidden]down- HttpServlet
+
+
+@enduml

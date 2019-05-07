@@ -23,7 +23,7 @@ public class ModArticleServlet extends HttpServlet {
         String article_prix = request.getParameter("article_prix");
         String article_qte = request.getParameter("article_qte");
         int id = Integer.parseInt(article_id);
-        int prix = (int)Float.parseFloat(article_prix);
+        float prix = Float.parseFloat(article_prix);
         int qte = (int)Float.parseFloat(article_qte);
         try {
             if (action.equals("Supprimer")) {

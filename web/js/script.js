@@ -13,10 +13,12 @@ $(document).ready(function () {
             success:function (data) {
                 if (data == "Supprimer") {
                     parent.remove();
+                } else if (data == "Modifier") {
+                    $('body').prepend('<div class="button green">Succés de la modification</div>');
                 }
             },
             error:function(message){
-                $('body').prepend('<div class="red">Erreur lors de la requete à la BDD : '+message+'</div>');
+                $('body').prepend('<div class="button red">Erreur lors de la requete à la BDD : '+message+'</div>');
             }
         })
     })

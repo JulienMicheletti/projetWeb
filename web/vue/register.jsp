@@ -28,7 +28,7 @@
         erreurs = (ArrayList<String>)request.getAttribute("erreurs");
 
     for(String e : erreurs) {%>
-<div class="red"><%=e%></div>
+<div class="button red"><%=e%></div>
 <%
     }
 %>

@@ -119,6 +119,12 @@ table {
 
 .red {
     background-color: red;
+    margin-bottom: 10px;
+}
+
+.green {
+    background-color: green;
+    margin-bottom: 10px;
 }
 
 .back {

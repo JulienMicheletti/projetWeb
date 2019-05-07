@@ -18,7 +18,7 @@ public class AddArticleServlet extends HttpServlet {
         String qte = request.getParameter("article_qte");
         String prix = request.getParameter("article_prix");
         int article_qte = Integer.parseInt(qte);
-        int article_prix = Integer.parseInt(prix);
+        float article_prix = Float.parseFloat(prix);
         Article article = new Article(nom, article_qte, article_prix);
         ArrayList<String> erreurs = new ArrayList<>();
         try {
@@ -31,6 +31,6 @@ public class AddArticleServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendRedirect("adminArticles");
     }
 }

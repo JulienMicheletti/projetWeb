@@ -88,6 +88,8 @@ public class Utilisateur {
 
     public void save() throws SQLException {
         if(id < 0) {
+            if(UtilisateurDAO.getInstance().existPseudo(pseudo))
+                throw new SQLException("Pseudo déjà existant");
             UtilisateurDAO.getInstance().insertQuery("INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `mdp`, `role`) VALUES ('" + nom + "', '" + prenom + "', '" + pseudo + "', '" + mdp + "', '" + role +"');");
             id = UtilisateurDAO.getInstance().lastID();
         } else {

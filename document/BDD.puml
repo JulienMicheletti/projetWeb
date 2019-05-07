@@ -23,7 +23,7 @@ object Utilisateur {
     int role
 }
 
-Article "1" --- "0-*" Commande:   \tArticle.id = article_ref_id
-Commande "0-*" --- "1" Utilisateur: \tUtilisateur.id = utilisateur_ref_id
+Article "1" --right- "0-*" Commande: \t\t\t\t
+Commande "0-*" --right- "1" Utilisateur: \t\t\t\t
 
 @enduml

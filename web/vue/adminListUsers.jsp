@@ -16,9 +16,6 @@
     %>
 </head>
 <body>
-<div class="back">
-    <a href="accueil" class="button bBack">Retour</a>
-</div>
 <%
     String username = request.getParameter("username");
     if(username == null)
@@ -29,10 +26,13 @@
         erreurs = (ArrayList<String>)request.getAttribute("erreurs");
 
     for(String e : erreurs) {%>
-<div class="red"><%=e%></div>
+<div class="button red"><%=e%></div>
 <%
     }
 %>
+<div class="back">
+    <a href="accueil" class="button bBack">Retour</a>
+</div>
 <div class="scroll">
     <div class="pseudo">
         <h2>Ajouter un utilisateur</h2>
